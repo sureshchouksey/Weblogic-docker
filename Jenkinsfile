@@ -44,6 +44,7 @@ pipeline {
             steps {
                 script {
                     browser = sh(returnStdout: true, script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'")
+                    echo 'Weblogic port number: ' + browser
                 }
             }
         }
