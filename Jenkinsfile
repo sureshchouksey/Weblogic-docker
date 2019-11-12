@@ -4,6 +4,8 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.nio.file.*;
 
+def port;
+
 pipeline {
     agent any
 
@@ -26,7 +28,7 @@ pipeline {
                 //sh ("docker run --name weblogic${env.BRANCH_NAME}${currentBuild.number} -d -p 7001 ashishfulcrum/weblogic_server:11g")
                //sh ("docker ps|grep weblogic${env.BRANCH_NAME}${currentBuild.number}|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'") 
                sh ("docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'") 
-               def port = sh (script: "date", returnStdout: true).toString().trim()
+               port = sh (script: "date", returnStdout: true).toString().trim()
                	
             }
         }
