@@ -4,7 +4,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.nio.file.*;
 
-def port;
+def  browser = 'Unknown'
 
 pipeline {
      environment {
@@ -15,7 +15,13 @@ pipeline {
 
     stages {
 
-       
+       stage('Example') {
+            steps {
+                script {
+                    browser = sh(returnStdout: true, script: 'echo Chrome')
+                }
+            }
+        }
         
         stage ('Build Docker') {
 
