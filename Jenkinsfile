@@ -21,7 +21,7 @@ pipeline {
                //PORT = sh ( script : ("docker ps|grep weblogic${env.BRANCH_NAME}${currentBuild.number}|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'"), returnStatus: true) 
                	//def PORT = sh (script: "(docker ps|grep some-container-name|sed 's/.*0.0.0.0://g'|sed 's/->.*//g')", returnStdout: true)
                 //echo "${PORT}" 
-                def port = sh(returnStdout: true, script: 'ls -al')
+                port = sh(returnStdout: true, script: 'ls -al')
                 echo "${port}" 
             }
         }
