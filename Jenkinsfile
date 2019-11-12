@@ -41,8 +41,8 @@ pipeline {
                //sh ("docker ps|grep weblogic${env.BRANCH_NAME}${currentBuild.number}|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'") 
                sh ("docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'") 
                //port = sh (script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'", returnStdout: true).trim()
-               	port = "32773";
-                 echo 'Building Environment: ' + port
+               	// port = "32773";
+                //  echo 'Building Environment: ' + port
             }
         }
 
