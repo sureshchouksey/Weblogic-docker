@@ -18,7 +18,8 @@ pipeline {
                 //bat ("docker stop spring${env.BRANCH_NAME}${currentBuild.number}")
                 //bat ("docker rm spring${env.BRANCH_NAME}${currentBuild.number}")
                 sh ("docker run --name weblogic${env.BRANCH_NAME}${currentBuild.number} -d -p 7001 ashishfulcrum/weblogic_server:11g")
-                echo "docker ps | grep spring${env.BRANCH_NAME} | sed 's/.*0.0.0.0://g' | sed 's/->.*//g'"
+                PORT="$(docker ps|grep some-container-name|sed 's/.*0.0.0.0://g'|sed 's/->.*//g')"
+                echo "${PORT}" 
             }
         }
 
