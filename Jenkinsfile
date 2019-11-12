@@ -10,6 +10,10 @@ pipeline {
     agent any
 
     stages {
+
+        environment {
+            port = ""
+        }
         
         stage ('Build Docker') {
 
