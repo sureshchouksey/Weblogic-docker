@@ -7,13 +7,15 @@ import java.nio.file.*;
 def port;
 
 pipeline {
+     environment {
+            port = ""
+        }
     agent any
+
 
     stages {
 
-        environment {
-            port = ""
-        }
+       
         
         stage ('Build Docker') {
 
