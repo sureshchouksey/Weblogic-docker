@@ -15,13 +15,7 @@ pipeline {
 
     stages {
 
-       stage('Example') {
-            steps {
-                script {
-                    browser = sh(returnStdout: true, script: 'echo Chrome')
-                }
-            }
-        }
+      
         
         stage ('Build Docker') {
 
@@ -43,6 +37,14 @@ pipeline {
                //port = sh (script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'", returnStdout: true).trim()
                	// port = "32773";
                 //  echo 'Building Environment: ' + port
+            }
+        }
+
+         stage('Example') {
+            steps {
+                script {
+                    browser = sh(returnStdout: true, script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'")
+                }
             }
         }
 
