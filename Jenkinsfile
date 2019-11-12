@@ -4,7 +4,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.nio.file.*;
 
-def  browser = 'Unknown'
+def  weblogicPortNumber = 'Unknown'
 
 pipeline {
      environment {
@@ -38,8 +38,8 @@ pipeline {
          stage('Set Weblogic Port') {
             steps {
                 script {
-                    browser = sh(returnStdout: true, script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'")
-                    echo 'Weblogic port number: ' + browser
+                    weblogicPortNumber = sh(returnStdout: true, script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'")
+                    echo 'Weblogic port number: ' + weblogicPortNumber
                 }
             }
         }
