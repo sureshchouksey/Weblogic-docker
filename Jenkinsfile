@@ -6,19 +6,10 @@ import java.nio.file.*;
 
 def  weblogicPortNumber = 'Unknown'
 
-pipeline {
-     environment {
-            port = "32772"
-        }
+pipeline {    
     agent any
-
-
     stages {
-
-      
-        
         stage ('Build Docker') {
-
             steps {
                 sh 'docker pull ashishfulcrum/weblogic_server:11g'
             }
@@ -38,7 +29,7 @@ pipeline {
          stage('Set Weblogic Port') {
             steps {
                 script {
-                    weblogicPortNumber = sh(returnStdout: true, script: "docker ps|grep weblogicmaster1|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'")
+                    weblogicPortNumber = sh(returnStdout: true, script: "docker ps|grep weblogic${env.BRANCH_NAME}${currentBuild.number}|sed 's/.*0.0.0.0://g'|sed 's/->.*//g'")
                     echo 'Weblogic port number: ' + weblogicPortNumber
                 }
             }
